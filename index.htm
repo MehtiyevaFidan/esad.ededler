@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function esad(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+}
+
+function tersi(num) {
+    let ters = 0;
+    for (let j = num; j > 0; j = Math.floor(j / 10)) {
+        ters = (ters * 10) + (j % 10);
+    }
+    return esad(ters) && ters !== num;
+}
+
+function goster() {
+    let sade = [];
+    for (let i = 2; i < 1000; i++) {
+        if (esad(i) && tersi(i)) {
+            sade.push(i);
+        }
+    }
+    return sade;
+}
+console.log(goster());
+
+    </script>
+</body>
+</html>
